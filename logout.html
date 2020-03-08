@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title id="title">Logout - SERCELL HOTSPOT</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="icon" href="img/favicon.png" />
+	<style>
+		.col-centered{
+		    float: none;
+		    margin: 0 auto;
+		}
+		tr.border_bottom td {
+		  border-bottom:1pt solid rgba(223, 228, 234,1.0);
+		}
+	</style>
+	<script language="JavaScript">
+	<!--
+	    function openLogin() {
+		if (window.name != 'hotspot_logout') return true;
+		open('$(link-login)', '_blank', '');
+		window.close();
+		return false;
+	    }
+	//-->
+	</script>
+</head>
+<body class="bg-light">
+	<div class="container">
+		<div class="row" style="margin-top:100px;">
+			<div class="col-md-4 col-centered">
+			<h2 class="text-center mb-3" style="color:grey;"><b>SERCELL HOTSPOT</b></h2>
+				<h5 class="text-center mb-3" style="color:grey;">Berhasil Logout !</h5><hr>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<table class="text-center" style="width:100%;color:grey;">
+						<tr class="border_bottom">
+					      	<td style="width:50%;">User</td>
+					      	<td style="width:50%;">$(username)</td>
+					    </tr>
+					    <tr class="border_bottom">
+					      	<td>IP Address</td>
+					      	<td>$(ip)</td>
+					    </tr>
+					    <tr class="border_bottom">
+					      	<td>MAC</td>
+					      	<td>$(mac)</td>
+						</tr>
+						<tr class="border_bottom">
+					      	<td>UP | DL</td>
+						    <td>$(bytes-in-nice) | $(bytes-out-nice)</td>
+					    </tr>
+						<tr class="border_bottom">
+						  	<td>Aktif</td>
+					     	<td>$(uptime)</td>
+					    </tr>
+					    $(if remain-bytes-total)
+					    <tr class="border_bottom">
+					      	<td>Sisa Kuota</td>
+					      	<td>$(remain-bytes-total-nice)</td>
+					    </tr>
+					    $(endif)
+					    $(if session-time-left)
+					    <tr class="border_bottom">
+						  	<td>Sisa Waktu</td>
+					      	<td>$(session-time-left)</td>
+						</tr>
+						$(endif)
+					</table>
+					</div>
+				</div>
+				<form action="$(link-login)" name="login" onSubmit="return openLogin()">
+					<button type="submit" class="btn mt-2 btn-block text-center" style="background-color: #57606f;color:white;">Login Kembali</button>
+				</form>
+				<p class="text-center" style="color:grey;font-size:11px;margin-top:10px;">Copyright &copy; <a href="https://kopaskode.com" style="color:grey;text-decoration: none;">OneJugo</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

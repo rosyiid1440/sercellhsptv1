@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title id="title">Logout - SERCELL HOTSPOT</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="icon" href="img/favicon.png" />
+	<style>
+		.col-centered{
+		    float: none;
+		    margin: 0 auto;
+		}
+		tr.border_bottom td {
+		  border-bottom:1pt solid rgba(223, 228, 234,1.0);
+		}
+	</style>
+	<script language="JavaScript">
+	<!--	
+	$(if advert-pending == 'yes')
+	    var popup = '';
+	    function focusAdvert() {
+		if (window.focus) popup.focus();
+	    }
+	    function openAdvert() {
+		popup = open('$(link-advert)', 'hotspot_advert', '');
+		setTimeout("focusAdvert()", 1000);
+	    }
+	$(endif)
+	    function openLogout() {
+		if (window.name != 'hotspot_status') return true;
+	        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+		window.close();
+		return false;
+	    }
+	//-->
+	</script>
+</head>
+<body class="bg-light">
+	<div class="container">
+		<div class="row" style="margin-top:100px;">
+			<div class="col-md-4 col-centered">
+			<h2 class="text-center mb-3" style="color:grey;"><b>SERCELL HOTSPOT</b></h2>
+				$(if login-by == 'trial')
+		        	<h5 class="text-center mb-3" style="color:grey;">Selamat Datang !</h5>
+		      	$(elif login-by != 'mac')
+		        	<h5 class="text-center mb-3" style="color:grey;">Selamat Datang !</h5>
+		        	<p class="text-center" id="user" style="color:grey;">$(username)</p>
+		      	$(endif)
+		      	<hr>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<table class="text-center" style="width:100%;color:grey;">
+					    <tr class="border_bottom">
+					      	<td>IP Address</td>
+					      	<td>$(ip)</td>
+					    </tr>
+					    <tr class="border_bottom">
+					      	<td>MAC</td>
+					      	<td>$(mac)</td>
+						</tr>
+						<tr class="border_bottom">
+					      	<td>UP | DL</td>
+						    <td>$(bytes-in-nice) | $(bytes-out-nice)</td>
+					    </tr>
+						<tr class="border_bottom">
+						  	<td>Aktif</td>
+					     	<td>$(uptime)</td>
+					    </tr>
+					    $(if remain-bytes-total)
+					    <tr class="border_bottom">
+					      	<td>Sisa Kuota</td>
+					      	<td>$(remain-bytes-total-nice)</td>
+					    </tr>
+					    $(endif)
+					    $(if session-time-left)
+					    <tr class="border_bottom">
+						  	<td>Sisa Waktu</td>
+					      	<td>$(session-time-left)</td>
+						</tr>
+						$(endif)
+						$(if blocked == 'yes')
+				        <tr class="border_bottom">
+				            <td>Status</td>
+				            <td><div style="color: #FF8080"><a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</div></td>
+				        </tr>
+				        $(elif refresh-timeout)
+				        <tr class="border_bottom">
+				            <td>Refresh</td>
+				            <td>$(refresh-timeout)</td>
+				        </tr>
+				        $(endif)
+					</table>
+					</div>
+				</div>
+				<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+					$(if login-by-mac != 'yes')
+						<button type="submit" class="btn mt-2 btn-block text-center" style="background-color: #57606f;color:white;">Logout</button>
+					$(endif)
+				</form>
+				<p class="text-center" style="color:grey;font-size:11px;margin-top:10px;">Copyright &copy; <a href="https://kopaskode.com" style="color:grey;text-decoration: none;">OneJugo</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " > status";
+//get vaidity
+    var usr = document.getElementById('user').innerHTML
+    var url = "https://example.com/status/status.php?name="; // http://ip-server-mikhmon/mikhmonv2/status/status.php?name=
+    var SessionName = "wifijoss"
+    var getvalid = url+usr+"&session="+SessionName
+    document.getElementById('exp').src = getvalid;	
+// jika kurang jelas silakan kunjungi https://laksa19.github.io/tuttorial.html	
+</script>
+</html>
