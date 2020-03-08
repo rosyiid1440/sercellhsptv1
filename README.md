@@ -1,5 +1,5 @@
 ## Thumbnail
-![GitHub Logo](/thumbnail.jpg)
+![GitHub Logo](/thumbnail.png)
 Format: ![Alt Text](url)
 
 ## Input otomatis huruf kecil (auto lowercase)
